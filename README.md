@@ -1836,5 +1836,97 @@ db.students.insertMany(
 ```
 4. Agregar el documento de un nuevo estudiante.
 ```
+db.students.insertOne( {
+
+    "code": 3823,
+
+    "name": "Chapman Tillman",
+
+    "email": "chapmantillman@zaj.com",
+
+    "courses": [
+
+      {
+
+        "code": 1,
+
+        "name": "Introducción a la programación",
+
+        "grade": 4.1
+
+      },
+
+      {
+
+        "code": 5,
+
+        "name": "Scrum",
+
+        "grade": 3.4
+
+      },
+
+     {
+
+       "code": 6,
+
+       "name": "Javascript",
+
+       "grade": 3.5
+
+     }
+
+  ],
+
+  "place": {
+
+    "address": "Cra 170B # 94 - 58",
+
+    "city": "Bogotá"
+
+  },
+
+  "age": 20
+
+}
+)
+```
+5. Agregar las siguientes propiedades a los documentos de los estudiantes:
+- 	{"active": true,
+
+"modalidad": "Virtual"}
+
+```
+db.students.updateMany({},{$set: {"active": true,"modalidad": "Virtual"}})
+
+```
+
+6. Actualizar los datos de los siguientes estudiantes:
+
+- code: 6503, actualizar edad a 20
+
+```
+db.students.update({"code":6503}, {$set:{age:20}})
+```
+- code: 6714, actualizar la ciudad de residencia a Barranquilla.
+```
+db.students.update({"code":6714}, {$set:{place:{city:"Barranquilla",address: 'Cll 133A # 151B - 84'}}})
+```
+- code: 3875, agregar un nuevo hobby, Volleyball.
+```
+db.students.update({"code":3875},{$set:{hobbies:["Volleyball",   'Lectura',
+    'Senderismo']}})
+```
+- code: 2354, agregar los siguientes hobbies, Lectura y Música.
+```
+db.students.update({"code":2354},{$set:{hobbies:['Ciclismo', 'Lectura',
+    'Musica']}})
+```
+- code: 7066, agregar los siguientes hobbies, Fútbol, Lectura.
+```
+db.students.update({"code":7066},{$set:{hobbies:['Fútbol', 'Lectura']}})
+```
+- name: Hilary Lee, actualizar el correo electrónico a hilarylee09@pearlessa.com
+```
 
 ```
