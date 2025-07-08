@@ -1932,9 +1932,67 @@ db.students.update({name:"Hilary Lee"},{$set:{email:"hilarylee09@pearlessa.com"}
 ```
 7. Renombrar la propiedad modalidad a modality.
 ```
-
+db.students.updateMany({ modalidad: { $exists: true } },{ $rename: { "modalidad": "modality" } })
 ```
 8. Cambiar la modalidad (modality) de los estudiantes que viven en Bucaramanga a “On Site”
 ```
+db.students.updateMany({ "place.city": "Bucaramanga" },{ $set: { modality: "On Site" } })
+```
 
+9. Crear las siguientes consultas:
+
+-    Consultar cuantos estudiantes viven en Barranquilla.
+```
+db.students.count({"place.city":"Barranquilla"})
+```
+-   Consultar cuantos estudiantes son mayores de edad.
+```
+db.students.count({age: { $gte: 18 }})
+```
+-    Consultar cuantos estudiantes no son de Bogotá.
+```
+db.students.count({"place.city": { $ne: "Bogotá" }})
+```
+
+-    Consultar el código, nombre y hobbies de los estudiantes que tienen 18 años.
+```
+db.students.aggregate(
+    {$match:{"age":{$eq:18}}},
+    {$group:{
+        _id:"$code",
+        name:{$first:"$name"},
+        hobbies:{$first:"$hobbies"}
+    }}
+)
+```
+-    Consultar el código, nombre y edad de los estudiantes que son menores de edad.
+```
+db.students.aggregate(
+    {$match:{"age":{$lt:18}}},
+    {$group:{
+        _id:"$code",
+        name:{$first:"$name"},
+        age:{$first:"$age"}
+    }}
+)
+```
+10. Elimina la propiedad active de todos los documentos.
+```
+
+```
+11. Eliminar el hobby Ciclismo del estudiante con código 2354.
+```
+
+```
+12. Eliminar los hobbies Lectura y Senderismo del estudiante con código 3875.
+```
+
+```
+13. Eliminar al estudiante con código 9241.
+```
+db.students.deleteOne({code:9241})
+```
+14. Eliminar todos los estudiantes de la ciudad de Barranquilla.
+```
+db.students.deleteMany({"place.city":"Barranquilla"})
 ```
