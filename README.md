@@ -3,10 +3,22 @@
 use acme_school
 ```
 
+
+- Combrobar que se haya creado la base de datos
+```
+show databases
+```
+![alt text](image.png)
+
 2. Creacion de coleccion students. 
 ```
 db.createCollection("students")
 ```
+- Combrobar que se haya creado la coleccion
+```
+show collections
+```
+![alt text](image-1.png)
 
 3. Carga de los registros de los estudiantes.
 ```
@@ -1891,6 +1903,13 @@ db.students.insertOne( {
 }
 )
 ```
+- Combrobar que se haya agregado los datos
+
+```
+db.students.find()
+```
+![alt text](image-2.png)
+
 5. Agregar las siguientes propiedades a los documentos de los estudiantes:
 - 	{"active": true, "modalidad": "Virtual"}
 
