@@ -8,7 +8,7 @@ use acme_school
 db.createCollection("students")
 ```
 
-3. Carga de los registros de los estdiantes.
+3. Carga de los registros de los estudiantes.
 ```
 db.students.insertMany(
 [{
@@ -1978,11 +1978,11 @@ db.students.aggregate(
 ```
 10. Elimina la propiedad active de todos los documentos.
 ```
-
+db.students.updateMany({ active: { $exists: true } },{ $unset: { active: "" } })
 ```
 11. Eliminar el hobby Ciclismo del estudiante con código 2354.
 ```
-
+db.students.update({"code":2354},{$set:{hobbies:['Fútbol', 'Lectura']}})
 ```
 12. Eliminar los hobbies Lectura y Senderismo del estudiante con código 3875.
 ```
