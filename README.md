@@ -1928,5 +1928,13 @@ db.students.update({"code":7066},{$set:{hobbies:['Fútbol', 'Lectura']}})
 ```
 - name: Hilary Lee, actualizar el correo electrónico a hilarylee09@pearlessa.com
 ```
+db.students.update({name:"Hilary Lee"},{$set:{email:"hilarylee09@pearlessa.com"}});
+```
+7. Renombrar la propiedad modalidad a modality.
+```
+
+```
+8. Cambiar la modalidad (modality) de los estudiantes que viven en Bucaramanga a “On Site”
+```
 
 ```
