@@ -1908,7 +1908,6 @@ db.students.insertOne( {
 ```
 db.students.find()
 ```
-![alt text](image-2.png)
 
 5. Agregar las siguientes propiedades a los documentos de los estudiantes:
 - 	{"active": true, "modalidad": "Virtual"}
@@ -1917,7 +1916,11 @@ db.students.find()
 db.students.updateMany({},{$set: {"active": true,"modalidad": "Virtual"}})
 
 ```
+- Combrobar que se haya agregado los datos
 
+```
+db.students.find()
+```
 6. Actualizar los datos de los siguientes estudiantes:
 
 - code: 6503, actualizar edad a 20
@@ -1925,6 +1928,7 @@ db.students.updateMany({},{$set: {"active": true,"modalidad": "Virtual"}})
 ```
 db.students.update({"code":6503}, {$set:{age:20}})
 ```
+
 - code: 6714, actualizar la ciudad de residencia a Barranquilla.
 ```
 db.students.update({"code":6714}, {$set:{place:{city:"Barranquilla",address: 'Cll 133A # 151B - 84'}}})
