@@ -1892,9 +1892,7 @@ db.students.insertOne( {
 )
 ```
 5. Agregar las siguientes propiedades a los documentos de los estudiantes:
-- 	{"active": true,
-
-"modalidad": "Virtual"}
+- 	{"active": true, "modalidad": "Virtual"}
 
 ```
 db.students.updateMany({},{$set: {"active": true,"modalidad": "Virtual"}})
@@ -1982,11 +1980,11 @@ db.students.updateMany({ active: { $exists: true } },{ $unset: { active: "" } })
 ```
 11. Eliminar el hobby Ciclismo del estudiante con código 2354.
 ```
-db.students.update({"code":2354},{$set:{hobbies:['Fútbol', 'Lectura']}})
+db.students.update({"code":2354},{$pullAll:{hobbies:["Ciclismo"]}})
 ```
 12. Eliminar los hobbies Lectura y Senderismo del estudiante con código 3875.
 ```
-
+db.students.update({"code":3875},{$pullAll:{hobbies:["Lectura","Senderismo"]}})
 ```
 13. Eliminar al estudiante con código 9241.
 ```
